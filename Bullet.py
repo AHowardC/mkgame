@@ -2,7 +2,7 @@ import pygame
 from pygame.sprite import Sprite
 
 class Bullet(Sprite):
-	def __init__(self,screen,the_player,direction):
+	def __init__(self,screen,the_player,direction,image):
 		super(Bullet, self).__init__()
 		self.screen = screen
 
@@ -14,6 +14,8 @@ class Bullet(Sprite):
 		self.direction = direction
 		self.x = self.rect.x
 		self.y = self.rect.y
+		self.image = pygame.image.load(image) #this is to load the fireball variable image
+
 
 	def update(self): #commented out in order to shoot in only one direction(right)
 		if self.direction == 1: #up
@@ -31,4 +33,5 @@ class Bullet(Sprite):
 
 
 	def draw_bullet(self):
-		pygame.draw.rect(self.screen, self.color, self.rect) #draw the bullet!
+		#this is to make the fireball shoot	
+		self.screen.blit(self.image, [self.x,self.y])

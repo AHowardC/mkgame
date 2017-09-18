@@ -23,10 +23,10 @@ screen_size = (1000,800)
 # Create a screen for pygame to use to draw on
 screen = pygame.display.set_mode(screen_size)
 pygame.display.set_caption("An epic fighter made with python")
-imagebg = '6white_woods.png'
+imagebg = '1theKove.png'
 background_image = pygame.image.load(imagebg)
 
-the_player = Player('LiuKang.png',50,30,screen)
+the_player = Player('LiuKang.png',10,550,screen)
 # Make a bad_guy
 sonyablade = Bad_guy(screen,"sonyablade.png")
 reptile = Bad_guy(screen,"reptile.png")
@@ -55,6 +55,15 @@ imageList = [
 'scorpion.png',
 'goro.png'
 ]
+levelcounter = 0
+imagebg = [
+		'1theKove.png',
+		'2lin_kuei_temple.png',
+		'3raiden_chamber.png',
+		'4mkxbg.png',
+		'5gorobg.png',
+		'6white_woods.png'
+		]
 
 # make a group for the bad_guys
 bad_guys = Group()
@@ -96,9 +105,7 @@ while game_on: #will run forever (until break)
 				the_player.should_move("left",True)
 			elif event.key == 32:
 				# 32 = SPACE BAR... FIRE!!!!
-				new_bullet = Bullet(screen, the_player, 1)
-				bullets.add(new_bullet)
-				new_bullet = Bullet(screen, the_player, 3)
+				new_bullet = Bullet(screen, the_player, 1,'haduken.png')
 				bullets.add(new_bullet)
 		elif event.type == pygame.KEYUP:
 			if event.key == 273:
@@ -126,16 +133,12 @@ while game_on: #will run forever (until break)
 	# screen.blit(the_player.image, [the_player.x,the_player.y])
 	moveoffRight = the_player.draw_me()
 	if moveoffRight:
-		randBg = randint(0,len(imagebg))
-		imagebg = [
-		'1theKove.png',
-		'2lin_kuei_temple.png',
-		'3raiden_chamber.png',
-		'4mkxbg.png',
-		'5gorobg.png',
-		'6white_woods.png'
-		]
-		background_image = pygame.image.load(imagebg)
+		
+		levelcounter += 1
+		#randBg = randint(0,len(imagebg) - 1)
+		if levelcounter > (len(imagebg) - 1):
+			levelcounter = 0 
+		background_image = pygame.image.load(imagebg[levelcounter])
 
 	for bullet in bullets:
 		# update teh bullet location
@@ -145,9 +148,9 @@ while game_on: #will run forever (until break)
 
 	# Check for collions...
 	bullet_hit = groupcollide(bullets,bad_guys,True,True)
-	# make new badguy appear
+	# make new badguy characters appear
 	if bullet_hit:
-		randNum = randint(0,len(imageList - 1))
+		randNum = randint(0,len(imageList) - 1 )
 		bad_guys.add(Bad_guy(screen,imageList[randNum]))
 	# print bullet_hit
 

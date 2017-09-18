@@ -9,7 +9,6 @@ class Player(Sprite):
 	def __init__(self,image,start_x,start_y,screen):
 		super(Player,self).__init__()
 		self.image = pygame.image.load('LiuKang.png')
-		# self.image = pygame.transform.scale(self.image,(200,200))
 		self.x = start_x
 		self.y = start_y
 		self.speed = 10
@@ -25,12 +24,13 @@ class Player(Sprite):
 		moveoffRight = False
 		if(self.should_move_up):
 			self.y -= self.speed
-			if self.y <= 0:		#this if conditional makes the character come back on screen
-				self.y = 800
+			if self.y <= 500:		#this if conditional makes the character come back on screen
+				self.y = 500
 		elif(self.should_move_down):
 			self.y += self.speed
-			if self.y >= 800:		#same as line 26
-				self.y = 0
+			if self.y >= 700:		#same as line 26
+				self.y = 700
+		
 		if(self.should_move_left):
 			self.x -= self.speed
 			if self.x <= 0:			#this if condition makes the character come back on the other side of the screen

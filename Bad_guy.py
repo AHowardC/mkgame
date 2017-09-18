@@ -7,7 +7,7 @@ class Bad_guy(Sprite):
 		super(Bad_guy,self).__init__()
 		self.image = pygame.image.load(image)
 		self.x = 1000
-		self.y = 800
+		self.y = 600
 		self.screen = screen
 		self.speed = 4
 		self.rect = self.image.get_rect()
