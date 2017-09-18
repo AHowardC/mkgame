@@ -26,6 +26,10 @@ pygame.display.set_caption("An epic fighter made with python")
 imagebg = '1theKove.png'
 background_image = pygame.image.load(imagebg)
 
+# put music wav here
+pygame.mixer.music.load('Song.wav')#add music wav here
+pygame.mixer.music.play(-1)
+
 the_player = Player('LiuKang.png',10,550,screen)
 # Make a bad_guy
 sonyablade = Bad_guy(screen,"sonyablade.png")
