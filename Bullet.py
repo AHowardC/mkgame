@@ -6,7 +6,7 @@ class Bullet(Sprite):
 		super(Bullet, self).__init__()
 		self.screen = screen
 
-		self.rect = pygame.Rect(0,0,5,5) #changes bullet size
+		self.rect = pygame.Rect(0,0,5,5) #changes painted bullet size (not the image)
 		self.color = (255,255,255)	#255 is white 0 is black
 		self.rect.centerx = the_player.x
 		self.rect.top = the_player.y
@@ -15,6 +15,7 @@ class Bullet(Sprite):
 		self.x = self.rect.x
 		self.y = self.rect.y
 		self.image = pygame.image.load(image) #this is to load the fireball variable image
+
 
 
 	def update(self): #commented out in order to shoot in only one direction(right)

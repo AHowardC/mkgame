@@ -102,6 +102,10 @@ while game_on: #will run forever (until break)
 				# 32 = SPACE BAR... FIRE!!!!
 				new_bullet = Bullet(screen, the_player, 1,'haduken.png')
 				bullets.add(new_bullet)
+			elif event.key == 120:
+				# 120 = X... ICEBALL!!!!
+				iceFire = Bullet(screen, the_player, 1,'hadouken-ice.png')
+				bullets.add(iceFire)	
 		elif event.type == pygame.KEYUP:
 			if event.key == 273:
 				the_player.should_move("up",False)
