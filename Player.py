@@ -21,6 +21,8 @@ class Player(Sprite):
 	# 2. The methods where you define all the class functions (methods)
 
 	def draw_me(self):
+		#for the player to movesoff screen to right
+		moveoffRight = False
 		if(self.should_move_up):
 			self.y -= self.speed
 			if self.y <= 0:		#this if conditional makes the character come back on screen
@@ -36,9 +38,11 @@ class Player(Sprite):
 		elif(self.should_move_right):
 			self.x += self.speed
 			if self.x >= 1000:		#same as line 30
-				self.x = 0
+				self.x = 0 
+				# switch moveoffright to true
+				moveoffRight = True
 		self.screen.blit(self.image, [self.x,self.y])
-
+		return moveoffRight
 	def should_move(self,direction,yes_or_no):
 		if(direction == "up"):
 			# the up key is down. update self.

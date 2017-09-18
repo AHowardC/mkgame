@@ -3,11 +3,11 @@ from pygame.sprite import Sprite
 from math import hypot
 
 class Bad_guy(Sprite):
-	def __init__(self,screen):
+	def __init__(self,screen,image):
 		super(Bad_guy,self).__init__()
-		self.image = pygame.image.load('reptile.png')
+		self.image = pygame.image.load(image)
 		self.x = 1000
-		self.y = 400
+		self.y = 800
 		self.screen = screen
 		self.speed = 4
 		self.rect = self.image.get_rect()

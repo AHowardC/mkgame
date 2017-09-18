@@ -4,7 +4,7 @@
 # it is NOT part of core. This is a 3rd party module.
 import pygame
 from pygame.sprite import Group, groupcollide
-
+from random import randint
 # -----CUSTOM CLASSES HERE-----
 from Player import Player
 from Bad_guy import Bad_guy
@@ -23,15 +23,43 @@ screen_size = (1000,800)
 # Create a screen for pygame to use to draw on
 screen = pygame.display.set_mode(screen_size)
 pygame.display.set_caption("An epic fighter made with python")
-background_image = pygame.image.load('white_woods.png')
+imagebg = '6white_woods.png'
+background_image = pygame.image.load(imagebg)
 
 the_player = Player('LiuKang.png',50,30,screen)
 # Make a bad_guy
-bad_guy = Bad_guy(screen)
+sonyablade = Bad_guy(screen,"sonyablade.png")
+reptile = Bad_guy(screen,"reptile.png")
+jade = Bad_guy(screen,"jade.png")
+johnnyCage = Bad_guy(screen,"johnnycage.png")
+kitana = Bad_guy(screen,"kitana.png")
+jax = Bad_guy(screen,"jax.png")
+jaxx = Bad_guy(screen,"jaxx.png")
+sonyablade2 = Bad_guy(screen,"sonyablade2.png")
+mileena = Bad_guy(screen,"mileena.png")
+subzero = Bad_guy(screen,"subzero.png")
+raiden = Bad_guy(screen,"raiden.png")
+scorpion = Bad_guy(screen,"scorpion.png")
+goro = Bad_guy(screen,"Goro.png")
+imageList = [
+'sonyablade.png',
+'reptile.png',
+'jade.png',
+'johnnycage.png',
+'kitana.png',
+'jax.png',
+'sonyablade2.png',
+'mileena.png',
+'subzero.png',
+'raiden.png',
+'scorpion.png',
+'goro.png'
+]
+
 # make a group for the bad_guys
 bad_guys = Group()
 # add our bad_guy to the bad_guys group
-bad_guys.add(bad_guy)
+bad_guys.add(reptile)
 # Make a new Group called bullets. Group is a pygame "list"
 bullets = Group()
 
@@ -94,9 +122,20 @@ while game_on: #will run forever (until break)
 		# draw the bad guy
 		bad_guy.draw_me()
 
-	# # Must be after fill, or we won't be able to see the hero
+	# Must be after fill, or we won't be able to see the hero
 	# screen.blit(the_player.image, [the_player.x,the_player.y])
-	the_player.draw_me()
+	moveoffRight = the_player.draw_me()
+	if moveoffRight:
+		randBg = randint(0,len(imagebg))
+		imagebg = [
+		'1theKove.png',
+		'2lin_kuei_temple.png',
+		'3raiden_chamber.png',
+		'4mkxbg.png',
+		'5gorobg.png',
+		'6white_woods.png'
+		]
+		background_image = pygame.image.load(imagebg)
 
 	for bullet in bullets:
 		# update teh bullet location
@@ -106,6 +145,10 @@ while game_on: #will run forever (until break)
 
 	# Check for collions...
 	bullet_hit = groupcollide(bullets,bad_guys,True,True)
+	# make new badguy appear
+	if bullet_hit:
+		randNum = randint(0,len(imageList - 1))
+		bad_guys.add(Bad_guy(screen,imageList[randNum]))
 	# print bullet_hit
 
 	# flip the screen, i.e.clear it so we can draw again... and again... and again
