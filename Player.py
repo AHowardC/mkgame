@@ -24,8 +24,8 @@ class Player(Sprite):
 		moveoffRight = False
 		if(self.should_move_up):
 			self.y -= self.speed
-			if self.y <= 500:		#this if conditional makes the character come back on screen
-				self.y = 500
+			if self.y <= 550:		#this if conditional makes the character come back on screen
+				self.y = 550
 		elif(self.should_move_down):
 			self.y += self.speed
 			if self.y >= 700:		#same as line 26

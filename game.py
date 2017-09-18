@@ -56,7 +56,7 @@ imageList = [
 'scorpion.png',
 'goro.png'
 ]
-levelcounter = 0
+ArenaCounter = 0
 imagebg = [
 		'1theKove.png',
 		'2lin_kuei_temple.png',
@@ -72,12 +72,6 @@ bad_guys = Group()
 bad_guys.add(reptile)
 # Make a new Group called bullets. Group is a pygame "list"
 bullets = Group()
-
-# the_player_image = pygame.image.load('batman.png')
-# player = {
-# 	"x": 100,
-# 	"y": 100
-# }
 
 game_on = True
 # Set up the main game loop
@@ -118,11 +112,9 @@ while game_on: #will run forever (until break)
 			elif event.key == 276:
 				the_player.should_move("left",False)
 
-	# print bullets
-
 	# paint the screen
 	#screen.fill(background_color)
-	screen.blit(background_image, [0,0])
+	screen.blit(background_image, [0,0]) #this is to put an background over the screen
 
 	for bad_guy in bad_guys:
 		# update the bad guy (based on where the player is)
@@ -135,11 +127,11 @@ while game_on: #will run forever (until break)
 	moveoffRight = the_player.draw_me()
 	if moveoffRight:
 		
-		levelcounter += 1
+		ArenaCounter += 1
 		#randBg = randint(0,len(imagebg) - 1)
-		if levelcounter > (len(imagebg) - 1):
-			levelcounter = 0 
-		background_image = pygame.image.load(imagebg[levelcounter])
+		if ArenaCounter > (len(imagebg) - 1):
+			ArenaCounter = 0 
+		background_image = pygame.image.load(imagebg[ArenaCounter])
 
 	for bullet in bullets:
 		# update teh bullet location
