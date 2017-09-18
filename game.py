@@ -23,7 +23,7 @@ screen_size = (1000,800)
 # Create a screen for pygame to use to draw on
 screen = pygame.display.set_mode(screen_size)
 pygame.display.set_caption("An epic fighter made with python")
-background_image = pygame.image.load('crossroadbg.png')
+background_image = pygame.image.load('white_woods.png')
 
 the_player = Player('LiuKang.png',50,30,screen)
 # Make a bad_guy
