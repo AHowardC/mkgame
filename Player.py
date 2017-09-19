@@ -5,7 +5,7 @@ class Player(Sprite):
 	# Classes always contain 2 parts:
 	# 1. the __init__ section where you define all attributes. 
 	# Init, only runs once. When the object is instantiated
-	# Because this is a subclass, we need to call the parent's (Sprite) __init__
+	# Because this is a subclass, I need to call the parent's (Sprite) __init__
 	def __init__(self,image,start_x,start_y,screen):
 		super(Player,self).__init__()
 		self.image = pygame.image.load('LiuKang.png')

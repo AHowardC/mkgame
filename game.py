@@ -61,6 +61,7 @@ imageList = [
 'subzero.png',
 'raiden.png',
 'scorpion.png',
+'kabal.png',
 'goro.png'
 ]
 
@@ -133,6 +134,8 @@ while game_on: #will run forever (until break)
 		bad_guy.update_me(the_player)
 		# draw the bad guy
 		bad_guy.draw_me()
+
+		#
 
 	# Must be after fill, or we won't be able to see the hero
 	# screen.blit(the_player.image, [the_player.x,the_player.y])

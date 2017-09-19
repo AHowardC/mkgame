@@ -34,5 +34,5 @@ class Bullet(Sprite):
 
 
 	def draw_bullet(self):
-		#this is to make the fireball shoot	
+		#this is to make the fireball 	
 		self.screen.blit(self.image, [self.x,self.y])
