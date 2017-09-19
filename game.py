@@ -88,7 +88,6 @@ imagebg = [
 		'1theKove.png',
 		'2lin_kuei_temple.png',
 		'3raiden_chamber.png',
-		'4mkxbg.png',
 		'5gorobg.png',
 		'6white_woods.png'
 		]
