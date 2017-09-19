@@ -36,3 +36,10 @@ class Bullet(Sprite):
 	def draw_bullet(self):
 		#this is to make the fireball 	
 		self.screen.blit(self.image, [self.x,self.y])
+
+
+	def bullet_offscreen(self):
+		if self.x >= 1050:
+			return True
+		else:
+			return False

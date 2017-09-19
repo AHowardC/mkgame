@@ -13,15 +13,30 @@ from Bullet import Bullet
 # Have to init the pygame object so we can use it
 pygame.init()
 
+
+
 # Screen size is a tuple
-screen_size = (1000,800)
+screen_width = 800
+screen_height = 1000
+screen_size = (screen_height,screen_width)
 
+"""
+font = pygame.font.SysFont(None, 35)
 
-# if i am going to paint the background, i'd need a tuple for the color
-#background_color = (82,111,53)
+def message_to_screen(msg, color):
+	screen_text = font.render(msg, True, color)
+	gameDisplay.blit(screen_text, [screen_width/2, screen_height/2])
+
+def gameLoop():
+	game_on = True
+	gameOver = False
+"""
+
 
 # Create a screen for pygame to use to draw on
 screen = pygame.display.set_mode(screen_size)
+
+
 pygame.display.set_caption("An epic fighter made with python")
 imagebg = '1theKove.png'
 background_image = pygame.image.load(imagebg)
@@ -39,6 +54,8 @@ johnnyCage = Bad_guy(screen,"johnnycage.png")
 kitana = Bad_guy(screen,"kitana.png")
 jax = Bad_guy(screen,"jax.png")
 kano = Bad_guy(screen,"kano.png")
+kabal = Bad_guy(screen,"kabal.png")
+baraka = Bad_guy(screen,"baraka.png")
 jaxx = Bad_guy(screen,"jaxx.png")
 sonyablade2 = Bad_guy(screen,"sonyablade2.png")
 mileena = Bad_guy(screen,"mileena.png")
@@ -47,6 +64,7 @@ raiden = Bad_guy(screen,"raiden.png")
 scorpion = Bad_guy(screen,"scorpion.png")
 goro = Bad_guy(screen,"Goro.png")
 
+characterCounter = 0
 imageList = [
 'sonyablade.png',
 'reptile.png',
@@ -65,7 +83,6 @@ imageList = [
 'kabal.png',
 'goro.png'
 ]
-
 ArenaCounter = 0
 imagebg = [
 		'1theKove.png',
@@ -78,12 +95,24 @@ imagebg = [
 
 # make a group for the bad_guys
 bad_guys = Group()
+
+hero_group = Group()
+hero_group.add(the_player)
+
 # add our bad_guy to the bad_guys group
-bad_guys.add(reptile)
+bad_guys.add(kano)
 # Make a new Group called bullets. Group is a pygame "list"
 bullets = Group()
 
+
 game_on = True
+"""
+gameOver = False
+
+	
+"""
+
+
 # Set up the main game loop
 while game_on: #will run forever (until break)
 	# Loop through all the pygame events.
@@ -136,32 +165,67 @@ while game_on: #will run forever (until break)
 		# draw the bad guy
 		bad_guy.draw_me()
 
-		#
 
-	# Must be after fill, or we won't be able to see the hero
-	# screen.blit(the_player.image, [the_player.x,the_player.y])
 	moveoffRight = the_player.draw_me()
 	if moveoffRight:
-		
 		ArenaCounter += 1
-		#randBg = randint(0,len(imagebg) - 1)
+		#randBg = randint(0,len(imagebg) - 1) #this is if I want random background changing
 		if ArenaCounter > (len(imagebg) - 1):
 			ArenaCounter = 0 
 		background_image = pygame.image.load(imagebg[ArenaCounter])
 
+
+
 	for bullet in bullets:
 		# update teh bullet location
 		bullet.update()
+		if bullet.bullet_offscreen():
+			bullets.remove(bullet)
 		# draw the bullet on the screen
 		bullet.draw_bullet()
 
 	# Check for collions...
 	bullet_hit = groupcollide(bullets,bad_guys,True,True)
+	
+	"""
+	# Check for badguy colliding with the player
+	enemy_hit = groupcollide(bad_guys,hero_group,False,True) 
+	"""
+	
+
 	# make new badguy characters appear
 	if bullet_hit:
-		randNum = randint(0,len(imageList) - 1 )
-		bad_guys.add(Bad_guy(screen,imageList[randNum]))
-	# print bullet_hit
+		newChar = randint(0,len(imageList) - 1 )
+		bad_guys.add(Bad_guy(screen,imageList[newChar]))
+
+	
+	"""
+	#this is the text for Game Over
+	if len(hero_group) == 0:
+		gameOver = True
+	while gameOver == True:
+		pygame.image.load('start_end.png')
+
+		message_to_screen("Game Over", (244,66,66))
+		pygame.display.update()
+
+		for event in pygame.event.get():
+			if event.type == pygame.KEYDOWN:
+				if event.key == pygame.K_q:
+					game_on = False
+					gameOver = False
+				if event.key == pygame.K_c:
+					gameLoop()
+
+	"""
+
+
+	
 
 	# flip the screen, i.e.clear it so we can draw again... and again... and again
-	pygame.display.flip()
+	pygame.display.update() #.update() and .flip() do the same things 
+
+
+
+
+
