@@ -17,6 +17,7 @@ class Player(Sprite):
 		self.should_move_down = False
 		self.should_move_left = False
 		self.should_move_right = False
+		self.rect = self.image.get_rect()
 	# 2. The methods where you define all the class functions (methods)
 
 	def draw_me(self):
@@ -41,6 +42,8 @@ class Player(Sprite):
 				self.x = 0 
 				# switch moveoffright to true
 				moveoffRight = True
+		self.rect.left = self.x
+		self.rect.top = self.y
 		self.screen.blit(self.image, [self.x,self.y])
 		return moveoffRight
 	def should_move(self,direction,yes_or_no):
