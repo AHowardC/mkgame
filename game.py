@@ -55,6 +55,7 @@ imageList = [
 'kitana.png',
 'jax.png',
 'kano.png',
+'baraka.png',
 'jaxx.png',
 'sonyablade2.png',
 'mileena.png',
