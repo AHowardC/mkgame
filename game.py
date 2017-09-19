@@ -211,10 +211,10 @@ while game_on: #will run forever (until break)
 
 		for event in pygame.event.get():
 			if event.type == pygame.KEYDOWN:
-				if event.key == pygame.K_q:
+				if event.key == 113:
 					game_on = False
 					gameOver = False
-				if event.key == pygame.K_c:
+				if event.key == 99:
 					gameLoop()
 
 	"""
