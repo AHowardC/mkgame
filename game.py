@@ -17,7 +17,7 @@ pygame.init()
 screen_size = (1000,800)
 
 
-# Because we are going to paint the background, we need a tuple for the color
+# if i am going to paint the background, i'd need a tuple for the color
 #background_color = (82,111,53)
 
 # Create a screen for pygame to use to draw on
@@ -38,6 +38,7 @@ jade = Bad_guy(screen,"jade.png")
 johnnyCage = Bad_guy(screen,"johnnycage.png")
 kitana = Bad_guy(screen,"kitana.png")
 jax = Bad_guy(screen,"jax.png")
+kano = Bad_guy(screen,"kano.png")
 jaxx = Bad_guy(screen,"jaxx.png")
 sonyablade2 = Bad_guy(screen,"sonyablade2.png")
 mileena = Bad_guy(screen,"mileena.png")
@@ -45,6 +46,7 @@ subzero = Bad_guy(screen,"subzero.png")
 raiden = Bad_guy(screen,"raiden.png")
 scorpion = Bad_guy(screen,"scorpion.png")
 goro = Bad_guy(screen,"Goro.png")
+
 imageList = [
 'sonyablade.png',
 'reptile.png',
@@ -52,6 +54,7 @@ imageList = [
 'johnnycage.png',
 'kitana.png',
 'jax.png',
+'kano.png',
 'jaxx.png',
 'sonyablade2.png',
 'mileena.png',
@@ -60,6 +63,7 @@ imageList = [
 'scorpion.png',
 'goro.png'
 ]
+
 ArenaCounter = 0
 imagebg = [
 		'1theKove.png',
@@ -122,7 +126,7 @@ while game_on: #will run forever (until break)
 
 	# paint the screen
 	#screen.fill(background_color)
-	screen.blit(background_image, [0,0]) #this is to put an background over the screen
+	screen.blit(background_image, [0,0]) #this is to put a background over the screen
 
 	for bad_guy in bad_guys:
 		# update the bad guy (based on where the player is)
