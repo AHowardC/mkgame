@@ -218,3 +218,4 @@ while game_on: #will run forever (until break)
 
 	# flip the screen, i.e.clear it so we can draw again... and again... and again
 	pygame.display.update() #.update() and .flip() do the same things 
+	
