@@ -20,19 +20,19 @@ screen_width = 800
 screen_height = 1000
 screen_size = (screen_height,screen_width)
 
-
+"""
+font = pygame.font.SysFont(None, 35)
+def message_to_screen(msg, color):
+	screen_text = font.render(msg, True, color)
+	gameDisplay.blit(screen_text, [screen_width/2, screen_height/2])
+def gameLoop():
+	game_on = True
+	gameOver = False
+"""
 
 
 # Create a screen for pygame to use to draw on
 screen = pygame.display.set_mode(screen_size)
-font = pygame.font.SysFont(None, 35)
-def message_to_screen(msg, color):
-	screen_text = font.render(msg, True, color)
-	screen.blit(screen_text, [screen_width/2, screen_height/2])
-def gameLoop():
-	game_on = True
-	gameOver = False
-
 
 
 pygame.display.set_caption("An epic fighter made with python")
@@ -86,6 +86,7 @@ imagebg = [
 		'1theKove.png',
 		'2lin_kuei_temple.png',
 		'3raiden_chamber.png',
+		'4mkxbg.png',
 		'5gorobg.png',
 		'6white_woods.png'
 		]
@@ -103,9 +104,10 @@ bullets = Group()
 
 
 game_on = True
+"""
 gameOver = False
 	
-
+"""
 
 
 # Set up the main game loop
@@ -160,8 +162,8 @@ while game_on: #will run forever (until break)
 		# draw the bad guy
 		bad_guy.draw_me()
 
-	for hero in hero_group:
-		moveoffRight = hero.draw_me()
+
+	moveoffRight = the_player.draw_me()
 	if moveoffRight:
 		ArenaCounter += 1
 		#randBg = randint(0,len(imagebg) - 1) #this is if I want random background changing
@@ -181,12 +183,10 @@ while game_on: #will run forever (until break)
 
 	# Check for collions...
 	bullet_hit = groupcollide(bullets,bad_guys,True,True)
-	enemy_hit = groupcollide(bad_guys,hero_group,False,True) 
-	if enemy_hit:
-		bad_guys = Group()
+	
 	"""
 	# Check for badguy colliding with the player
-	
+	enemy_hit = groupcollide(bad_guys,hero_group,False,True) 
 	"""
 	
 
@@ -196,28 +196,22 @@ while game_on: #will run forever (until break)
 		bad_guys.add(Bad_guy(screen,imageList[newChar]))
 
 	
-	
+	"""
 	#this is the text for Game Over
-	
 	if len(hero_group) == 0:
 		gameOver = True
 	while gameOver == True:
-		gameoverscreen = pygame.image.load('start_end.png')
-		screen.blit(gameoverscreen, [0,0])
+		pygame.image.load('start_end.png')
 		message_to_screen("Game Over", (244,66,66))
 		pygame.display.update()
 		for event in pygame.event.get():
 			if event.type == pygame.KEYDOWN:
 				if event.key == 113:
-					pygame.quit()
-				if event.key == 99:
-					print "game shoud restart"
-					the_player = Player('LiuKang.png',10,550,screen)
-					hero_group.add(the_player)
-					bad_guys.add(Bad_guy(screen,"jax.png"))
+					game_on = False
 					gameOver = False
-					print game_on , gameOver
-		
+				if event.key == 99:
+					gameLoop()
+	"""
 
 
 	
