@@ -86,7 +86,6 @@ imagebg = [
 		'1theKove.png',
 		'2lin_kuei_temple.png',
 		'3raiden_chamber.png',
-		'4mkxbg.png',
 		'5gorobg.png',
 		'6white_woods.png'
 		]
@@ -106,7 +105,7 @@ bullets = Group()
 game_on = True
 """
 gameOver = False
-	
+
 """
 
 
@@ -141,7 +140,7 @@ while game_on: #will run forever (until break)
 			elif event.key == 120:
 				# 120 = X... ICEBALL!!!!
 				iceFire = Bullet(screen, the_player, 1,'hadouken-ice.png')
-				bullets.add(iceFire)	
+				bullets.add(iceFire)
 		elif event.type == pygame.KEYUP:
 			if event.key == 273:
 				the_player.should_move("up",False)
@@ -168,7 +167,7 @@ while game_on: #will run forever (until break)
 		ArenaCounter += 1
 		#randBg = randint(0,len(imagebg) - 1) #this is if I want random background changing
 		if ArenaCounter > (len(imagebg) - 1):
-			ArenaCounter = 0 
+			ArenaCounter = 0
 		background_image = pygame.image.load(imagebg[ArenaCounter])
 
 
@@ -183,19 +182,19 @@ while game_on: #will run forever (until break)
 
 	# Check for collions...
 	bullet_hit = groupcollide(bullets,bad_guys,True,True)
-	
+
 	"""
 	# Check for badguy colliding with the player
-	enemy_hit = groupcollide(bad_guys,hero_group,False,True) 
+	enemy_hit = groupcollide(bad_guys,hero_group,False,True)
 	"""
-	
+
 
 	# make new badguy characters appear
 	if bullet_hit:
 		newChar = randint(0,len(imageList) - 1 )
 		bad_guys.add(Bad_guy(screen,imageList[newChar]))
 
-	
+
 	"""
 	#this is the text for Game Over
 	if len(hero_group) == 0:
@@ -214,8 +213,7 @@ while game_on: #will run forever (until break)
 	"""
 
 
-	
+
 
 	# flip the screen, i.e.clear it so we can draw again... and again... and again
-	pygame.display.update() #.update() and .flip() do the same things 
-	
+	pygame.display.update() #.update() and .flip() do the same things
